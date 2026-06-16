@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  CLOSED
+}
+
+enum Urgency {
+  LOW
+  MEDIUM
+  HIGH
+  UNKNOWN
+}
+
+enum Quality {
+  LOW
+  MEDIUM
+  HIGH
+  UNKNOWN
+}
+
+enum Intent {
+  PRICING
+  DEMO
+  PRODUCT_INFO
+  OTHER
+  UNKNOWN
+}
+
+enum MonthlyVisitors {
+  UNDER_10K
+  BETWEEN_10K_100K
+  OVER_100K
+  UNKNOWN
+}
+
+// One row per finished chatbot conversation that produced a contact request.
+model Lead {
+  id          String     @id @default(cuid())
+  createdAt   DateTime   @default(now())
+  status      LeadStatus @default(NEW)
+
+  name        String?
+  email       String?
+  company     String?
+
+  reason          String // What they want / why they reached out, summarized by the model
+  urgency         Urgency         @default(UNKNOWN)
+  quality         Quality         @default(UNKNOWN)
+  qualityNote     String // One-line reasoning behind the quality rating, for the sales team
+  intent          Intent          @default(UNKNOWN)
+  monthlyVisitors MonthlyVisitors @default(UNKNOWN)
+
+  transcript  Json // Full conversation as [{ role, content }][]
+  flagged     Boolean @default(false) // Heuristic bot/spam suspicion flag
+
+  @@index([createdAt])
+}

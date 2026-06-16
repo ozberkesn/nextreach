@@ -112,7 +112,7 @@ export function ChatWidget({ open, onClose }: { open: boolean; onClose: () => vo
             </span>
             <div>
               <p className="text-sm font-semibold text-slate-900">Reach · NextReach Asistanı</p>
-              <p className="text-xs text-slate-500">Genelde birkaç dakika içinde yanıtlar</p>
+              <p className="text-xs text-slate-500">Anında yanıt veren yapay zeka asistanı</p>
             </div>
           </div>
           <button

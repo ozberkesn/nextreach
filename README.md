@@ -7,8 +7,9 @@ ekibi için kullanılabilir bir iletişim talebi oluşturan bir chatbot ile değ
 
 **Geliştirme:** Bu proje [Claude Code] ile geliştirilmiştir.
 
-**Toplam harcanan süre:** _[doldurulacak]_
+**Toplam harcanan süre:** 4 saat 10 dakika
 -Çalışma saatleri: 10:00 - 13:30
+-Çalışma saatleri: 15:00 - 15:40
 
 ## Nasıl çalıştırılır (lokalde)
 
